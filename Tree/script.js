@@ -6,7 +6,7 @@ var example = document.getElementById("example"),
     example.width  = window.innerWidth;
 
 function draw(){   
-    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = colb;
     ctx.fillRect(0, 0, x, y);       
 }
 
@@ -196,7 +196,22 @@ var z = 0;
 var ww = 1;
 alpha = Math.PI / 4;
 var cola = 'rgb(0, 255, 0)';
-var colb = 'rgb(0, 255, 255)';
+var colb = 'rgb(0, 0, 0)';
+
+function rnd(){
+    cola = getRndColor();
+}
+
+function setcolor(){
+    var x = document.getElementById("myColor").value;
+    cola = x;
+}
+
+function setcolorbg(){
+    var x = document.getElementById("mybgColor").value;
+    colb = x;
+}
+
 function drawtree(){
     alpha = document.getElementById("angle").value;
     //x = window.innerWidth;

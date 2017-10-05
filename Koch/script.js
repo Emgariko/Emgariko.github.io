@@ -6,7 +6,7 @@ var example = document.getElementById("example"),
     example.width = window.innerWidth;
     
 function draw(){   
-    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = colb;
     ctx.fillRect(0, 0, x, y);       
 }
 
@@ -31,7 +31,7 @@ var kek = 0;
 
 function Koch(ax, ay, ex, ey, i, w){
     if (i == 0){
-        drawline(ax, ay, ex, ey, 'rgb(255, 0, 255)', w);
+        drawline(ax, ay, ex, ey, cola, w);
         //drawline(ax, ay, ex, ey, getRndColor(), w);
         return 0;                                  
     }
@@ -74,10 +74,26 @@ var x2 = x;
 var y1 = y - y / 7;
 var y2 = y - y / 7;
 kek = 0;
-
+var cola = "rgb(255, 0, 255)", colb = "rgb(0, 0, 0)";
 var lol = 1;
 
 //Koch(0, y1, x2, y2, 7, 0);
+
+function setcolor(){    
+    var x = document.getElementById("myColor").value;
+    cola = x;
+}
+
+function setcolorbg(){
+    var x = document.getElementById("mybgColor").value;
+    colb = x;
+}
+
+function rnd(){
+    cola = getRndColor();
+}
+
+
 var timerid = 
 setInterval(function(){
     draw();

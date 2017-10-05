@@ -12,11 +12,19 @@
         </style>
         <script language="JavaScript" src="./main.js"></script>
     </head>
-    <body>
-        <body bgcolor="black">
+    <body>                         
         <canvas id='example'>Обновите браузер</canvas>
         <script src="./script.js">                                                                
         </script>        
-        <input value = "Pause/Unpause"  type="button" onclick="mstop()" />                                                                                 
+        <input value = "Pause/Unpause"  type="button" onclick="mstop()" />
+        <input value = "Random color" type = "button" onclick="rnd()"/>
+        <p></p>
+        Select fractal color
+        <input type = "color" value = "#ff0000" id = "myColor"/>
+        <input value = "Set color" type = "button" onclick="setcolor()"/>
+        <p></p>                               
+        Select background color
+        <input type = "color" id = "mybgColor"/>
+        <input value = "Set color" type = "button" onclick="setcolorbg()"/>                                                                               
     </body>
 </html>
