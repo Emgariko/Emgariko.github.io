@@ -6,7 +6,7 @@ var example = document.getElementById("example"),
     example.width  = window.innerWidth;
 
 function draw(){   
-    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = colb;
     ctx.fillRect(0, 0, x, y);       
 }
 
@@ -128,6 +128,7 @@ draw();
 
 var col = [];
 var i;
+var colb = "rgb(0, 0, 0)";
 for (i = 0; i < 100; i++){
     col.push(getRndColor());   
 }
@@ -146,6 +147,10 @@ function setcolor(){
     }
 }
 
+function setcolorbg(){
+    var x = document.getElementById("mybgColor").value;
+    colb = x;
+}
 
 function drawfr(){
     draw();
