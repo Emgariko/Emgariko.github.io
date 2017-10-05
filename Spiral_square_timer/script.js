@@ -6,7 +6,7 @@ var example = document.getElementById("example"),
     example.width  = window.innerWidth;
 
 function draw(){   
-    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = colb;
     ctx.fillRect(0, 0, x, y);       
 }
 
@@ -128,13 +128,15 @@ draw();
 
 var col = [];
 var i;
+
 for (i = 0; i < 1000; i++){
     col.push(getRndColor());   
 }
 
-alpha = 0.000000001;
+alpha = Math.PI / 4;
 var delta = 0.008;
 var au = 0;
+var colb = "rgb(0, 0, 0)";
 
 function plus(){    
     if (au != 1)
@@ -150,6 +152,25 @@ function minus(){
 
 function auto(){
     au = 1 - au;
+}
+
+function rnd(){
+    for (i = 0; i < col.length; i++){
+        col[i] = getRndColor();
+    }
+}
+
+function setcolor(){
+    var x = document.getElementById("myColor").value;
+    //alert(x);
+    for (i = 0; i < col.length; i++){
+        col[i] = x;
+    }
+}
+
+function setcolorbg(){
+    var x = document.getElementById("mybgColor").value;
+    colb = x;
 }
 
 var timerid = setInterval(function(){

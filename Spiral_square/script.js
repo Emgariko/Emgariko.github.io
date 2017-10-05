@@ -132,6 +132,21 @@ for (i = 0; i < 100; i++){
     col.push(getRndColor());   
 }
 
+function rnd(){
+    for (i = 0; i < col.length; i++){
+        col[i] = getRndColor();
+    }
+}
+
+function setcolor(){
+    var x = document.getElementById("myColor").value;
+    //alert(x);
+    for (i = 0; i < col.length; i++){
+        col[i] = x;
+    }
+}
+
+
 function drawfr(){
     draw();
     var alpha = document.getElementById("angle").value / 1000;
