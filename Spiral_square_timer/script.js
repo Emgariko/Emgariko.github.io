@@ -137,17 +137,27 @@ alpha = Math.PI / 4;
 var delta = 0.008;
 var au = 0;
 var colb = "rgb(0, 0, 0)";
-
+var EPS = 0.0001;
 function plus(){    
     if (au != 1)
         delta *= 1.5;
-    delta = min(delta, 0.5);
+    if (delta > 0){
+        delta = Math.min(delta, 1.55555555);
+    }
+    else{                       
+        delta = -Math.min(-delta, 1.5555555); 
+    }
 }
 
 function minus(){
     if (au != 1)
         delta /= 1.5;
-    delta = max(delta, 0.000000000000001);
+    if (delta > 0){
+        delta = Math.max(delta, 0.000000001);
+    }
+    else{
+        delta = -Math.max(-delta, 0.000000001);
+    }
 }
 
 function auto(){
@@ -173,17 +183,36 @@ function setcolorbg(){
     colb = x;
 }
 
+function wr(){
+    alert("alpha = " + ((180 * alpha) / Math.PI) + "\ndelta = " + delta);
+}
+
 var timerid = setInterval(function(){
-    draw();                
+    alert("alpha = " + ((180 * alpha) / Math.PI) + "\ndelta = " + delta);
+    //alpha += delta;
+    alpha = Math.max(alpha, EPS);
+    alpha = Math.min(alpha, Math.PI / 2);
     alpha += delta;
-    if (alpha + delta - Math.PI / 2 > 0.0000000001)  {
-        delta *= -1;
-        alpha = Math.PI / 2 - 0.0000000000001;        
+    if (alpha - Math.PI / 2 < -EPS && alpha >= EPS){
+        draw();
     }
-    if (alpha + delta < 0.000000001){
-        delta *= -1;
-        alpha = 0.0000000001;    
+    if (au){
+        delta = (0.4 / (1 + Math.abs(Math.PI / 4 - alpha))); 
+        if (alpha < EPS){
+            delta = Math.abs(delta);
+        }
+        if (alpha - Math.PI / 2 > EPS){
+            delta = -Math.abs(delta);
+        }
     }
+    else{
+        if (alpha < EPS){
+            delta = Math.abs(delta);
+        }
+        if (alpha - Math.PI / 2 > EPS){
+            delta = -Math.abs(delta);
+        }
+    }             
     var c = pt(0, 0);
     var w = 1.75;
     var a1, a2, a3, a4;
@@ -203,7 +232,9 @@ var timerid = setInterval(function(){
     }                  
     //drawrect(a1, a2, a3, a4, "rgb(255, 0, 0)", 2);  
     //alert(a1.x + ' ' + a1.y + "\n" + a2.x + ' ' + a2.y + "\n" + a3.x + ' ' + a3.y + "\n" + a4.x + ' ' + a4.y); 
-    drawr(a1, a2, a3, a4, col, w, alpha, 0);
-}, 200);
+    if (alpha - Math.PI / 2 < -EPS && alpha >= EPS){
+        drawr(a1, a2, a3, a4, col, w, alpha, 0);
+    }
+}, 100);
 
-drawfr();
+//drawfr();
