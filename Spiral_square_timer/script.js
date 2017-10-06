@@ -188,7 +188,8 @@ function wr(){
 }
 
 var timerid = setInterval(function(){
-    alert("alpha = " + ((180 * alpha) / Math.PI) + "\ndelta = " + delta);
+    if (au)
+        alert("alpha = " + ((180 * alpha) / Math.PI) + "\ndelta = " + delta);
     //alpha += delta;
     alpha = Math.max(alpha, EPS);
     alpha = Math.min(alpha, Math.PI / 2);
