@@ -158,7 +158,7 @@ function rotate90(a){
 }                 
 
 function tree(a, b, an, len, i){
-    if (len < 3){
+    if (len < 1.5){
         //alert(i);
         return;  
     }
