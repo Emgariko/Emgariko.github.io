@@ -138,6 +138,18 @@ var delta = 0.008;
 var au = 0;
 var colb = "rgb(0, 0, 0)";
 var EPS = 0.0001;
+
+var wi = 2 - 0.25;
+
+function lplus(){    
+	wi = wi + 0.25;
+}
+function lminus(){    
+	wi = wi - 0.25;
+}
+
+
+
 function plus(){    
     if (au != 1)
         delta *= 1.5;
@@ -215,7 +227,7 @@ var timerid = setInterval(function(){
         }
     }             
     var c = pt(0, 0);
-    var w = 1.75;
+    var w = wi;
     var a1, a2, a3, a4;
     if (x > y){
         c = pt(x / 2, y / 2);
